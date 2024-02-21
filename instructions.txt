@@ -1,0 +1,20 @@
+MODEL CREATION
+1) Create a new file called model.py (touch model.py)
+2) Import pandas, numpy, and sklearn.linear_model (import pandas as pd, import numpy as np, from sklearn.linear_model import LinearRegression)
+3) read in insurance file and create basic linear regression model
+4) Save the model using pickle (import pickle, with open('sample_model.pkl', 'wb') as model_file: pickle.dump(model, model_file))
+
+FLASK BACKEND API
+1) Create frontend and backend folders (Flask is a micro web framework written in Python) 
+2) Create a virtual environment in the backend folder (python3 -m venv .venv)
+3) Activate the virtual environment (source .venv/bin/activate)
+4) Install Flask, scikit-learn (pip install flask, scikit-learn)
+5) Create a new file called app.py in the backend folder (touch app.py)
+6) Add app code to app.py
+7) Test it with a curl request (curl -X POST -H "Content-Type: application/json" -d '{"age": 19, "bmi": 27.9, "children": 0}' http://localhost:8000/charges_api)
+    - or test with python file
+
+REACT FRONTEND API REQUEST
+1) create react app (npx create-react-app frontend)
+2) Modify the App.js file to make a request to the backend API
+3) Test the app (npm start)
