@@ -8,7 +8,7 @@ function App() {
   const [prediction, setPrediction] = useState(null);
 
   const getInsuranceQuote = async () => {
-    const response = await fetch("http://localhost:8000/charges_api", {
+    const response = await fetch("http://localhost:8000/charges/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

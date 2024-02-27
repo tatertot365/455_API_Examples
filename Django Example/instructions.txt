@@ -1,0 +1,15 @@
+1) Create virtual environment with django and install django (python3 -m venv env, source env/bin/activate, pip install django, pip install djangorestframework)
+2) Create a new django project (django-admin startproject myproject)
+3) Create a new app (python manage.py startapp myapp)
+4) Sync the database (python manage.py migrate)
+5) Create a superuser (python manage.py createsuperuser --username admin --email admin@example.com)
+6) Run the server (python manage.py runserver)
+7) Stop server and add the app to the installed apps in settings.py (settings.py -> INSTALLED_APPS = ['rest_framework'])
+8) Go do insurance_charges_api apps.py and add the app to the installed apps in settings.py (settings.py -> INSTALLED_APPS = ['insurance_charges_api.apps.InsuranceChargesApiConfig'])
+9) Install CORS (pip install django-cors-headers) add to installed apps in settings.py (settings.py -> INSTALLED_APPS = ['corsheaders']) and add to middleware in settings.py (settings.py -> MIDDLEWARE = ['corsheaders.middleware.CorsMiddleware'])
+* make sure to place the middleware at the top of the list
+10) Add the following to settings.py (settings.py -> CORS_ALLOW_ALL_ORIGINS = True)
+11) Add urls to the app (urls.py -> path('api/', views.InsuranceChargesList)) and import the views (from insurance_charges_api import views)
+12) Create a view (views.py you can look at my code)
+13) You might have to use the absolute path to the pickle file in the view
+14) run the server and go to the api (http://localhost:8000/api/) you can test out your api with the browser or postman or just use the front-end example in the flask folder
