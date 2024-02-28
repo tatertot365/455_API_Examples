@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/C_API_Example.props" />
+</Project>

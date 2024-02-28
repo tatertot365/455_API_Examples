@@ -12,4 +12,5 @@
 11) Add urls to the app (urls.py -> path('api/', views.InsuranceChargesList)) and import the views (from insurance_charges_api import views)
 12) Create a view (views.py you can look at my code)
 13) You might have to use the absolute path to the pickle file in the view
+14) You will also have to install sklearn in your django virtual envrionment(pip install scikit-learn)
 14) run the server and go to the api (http://localhost:8000/api/) you can test out your api with the browser or postman or just use the front-end example in the flask folder
