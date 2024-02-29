@@ -1,5 +1,13 @@
-﻿using Newtonsoft.Json;
-using System.Text.Json;
+﻿using System.Text.Json;
+using Microsoft.ML;
+using Microsoft.ML.OnnxRuntime.Tensors;
+using Microsoft.ML.Data;
+using Microsoft.ML.Transforms.Onnx;
+using System.Linq;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.ML.OnnxRuntime;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +19,9 @@ builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
 {
     builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
 }));
+/*builder.Services.AddSingleton<InferenceSession>(
+    new InferenceSession("/Users/tategillespie/Desktop/455 TA/Flask Example/C# Example/C_API_Example/sample_model.onnx")
+);*/
 
 var app = builder.Build();
 
@@ -24,21 +35,56 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("corsapp");
 
-
-
 app.MapPost("/charges_api", async (HttpRequest request) =>
 {
     var body = await request.ReadFromJsonAsync<JsonDocument>();
 
+    string age = body.RootElement.GetProperty("age").GetString();
+    string bmi = body.RootElement.GetProperty("bmi").GetString();
+    string children = body.RootElement.GetProperty("children").GetString();
 
-    Console.WriteLine(body);
+    var data = new InputData() { Age = float.Parse(age), Bmi = float.Parse(bmi), Children = float.Parse(children) };
 
-    var age = body.RootElement.GetProperty("age");
-    var bmi = body.RootElement.GetProperty("bmi");
-    var children = body.RootElement.GetProperty("children");
+    NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor());
+
+    InferenceSession session = new InferenceSession("/Users/tategillespie/Desktop/455 TA/Flask Example/C# Example/C_API_Example/sample_model.onnx");
+
+    var result = session.Run(new List<NamedOnnxValue>
+    {
+        NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
+    });
+
+    Tensor<float> score = result.First().AsTensor<float>();
+    var prediction = new OnnxOutput { prediction = score.First() };
+
+    result.Dispose();
+
+    Console.WriteLine($"Predicted Charges: {prediction.prediction}");
 
 
-    return 1;
+    return Results.Text( JsonConvert.SerializeObject(prediction), contentType: "application/json");
 });
 
 app.Run();
+
+public class InputData
+{
+    public float Age { get; set; }
+    public float Bmi { get; set; }
+    public float Children { get; set; }
+
+    public Tensor<float> AsTensor()
+    {
+        float[] data = new float[]
+        {
+            Age, Bmi, Children
+        };
+        int[] dimensions = new int[] { 1, 3 };
+        return new DenseTensor<float>(data, dimensions);
+    }
+}
+
+public class OnnxOutput
+{
+    public float prediction { get; set; }
+}
