@@ -1,0 +1,14 @@
+ASP.NET 6.0 C# Example
+https://towardsdatascience.com/deploy-sci-kit-learn-models-in-net-core-applications-90e24e572f64
+1) You will need to install these nuget packages and add them to your project:
+    - Newtonsoft.Json
+    - Microsoft.ML.OnnxRuntime
+2) you will need to add CORS (Cross-Origin Resource Sharing)
+    builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+    {
+        builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+    }));
+    app.UseCors("corsapp");
+3) Then you need to create the POST route for your API
+4) You then need to create the classes for the input data and the output data
+5) Follow my example for the code going inside the POST route

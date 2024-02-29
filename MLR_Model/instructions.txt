@@ -1,0 +1,8 @@
+MODEL CREATION
+1) Create a new file called model.py (touch model.py)
+2) Import pandas, numpy, and sklearn.linear_model (import pandas as pd, import numpy as np, from sklearn.linear_model import LinearRegression)
+3) read in insurance file and create basic linear regression model
+4) Save the model using pickle (import pickle, with open('sample_model.pkl', 'wb') as model_file: pickle.dump(model, model_file))
+
+#### Alternate Method
+- I also created a model and exported it to an .onnx file while is used more commonly in C# applications

@@ -1,0 +1,4 @@
+REACT FRONTEND API REQUEST
+1) create react app (npx create-react-app frontend)
+2) Modify the App.js file to make a request to the backend API
+3) Test the app (npm start)
