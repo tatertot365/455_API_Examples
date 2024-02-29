@@ -6,14 +6,13 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Program.cs" Line="60" Column="22" />
+      <File FileName="Program.cs" Line="80" Column="42" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="C_API_Example">
             <Node name="C_API_Example">
-              <Node name="Dependencies" expanded="True" />
               <Node name="Program.cs" selected="True" />
             </Node>
           </Node>

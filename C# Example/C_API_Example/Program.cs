@@ -1,11 +1,5 @@
 ﻿using System.Text.Json;
-using Microsoft.ML;
 using Microsoft.ML.OnnxRuntime.Tensors;
-using Microsoft.ML.Data;
-using Microsoft.ML.Transforms.Onnx;
-using System.Linq;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.ML.OnnxRuntime;
 using Newtonsoft.Json;
 
@@ -19,9 +13,6 @@ builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
 {
     builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
 }));
-/*builder.Services.AddSingleton<InferenceSession>(
-    new InferenceSession("/Users/tategillespie/Desktop/455 TA/Flask Example/C# Example/C_API_Example/sample_model.onnx")
-);*/
 
 var app = builder.Build();
 
