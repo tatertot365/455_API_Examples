@@ -9,7 +9,7 @@ function App() {
 
   const getInsuranceQuote = async () => {
     const FLASK_API_URL = "http://localhost:8000/charges_api";
-    const DJANGO_API_URL = "http://localhost:8000/charges_api";
+    const DJANGO_API_URL = "http://localhost:8000/charges";
     const ASP_API_URL = "http://localhost:5109/charges_api";
 
     const response = await fetch(FLASK_API_URL, {
