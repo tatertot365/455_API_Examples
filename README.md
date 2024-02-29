@@ -6,4 +6,4 @@ This repository is meant to serve as an example for creating a machine learning 
 2. Django - A lot of you are probably familiar with Django, since we are only using one route for the API it can be a bit burdensome considering it is using an entire framework for one route. But if it is a preferred framework there is an example for you.
 3. C# ASP.NET 6 - I built the backend API in ASP.NET 6, this version is in the event you want to use C# as your backend. You will have to use a different file format when exporting your created model, this is a ONNX file that generally works better with C#.
 
-Each example has its own instructions.txt file should should provide a good overview of commands to run, libraries to include, and the process of building an API for our purposes.
+Each example has its own instructions.txt file which should provide a good overview of commands to run, libraries to include, and the process of building an API for our purposes.
