@@ -8,7 +8,11 @@ function App() {
   const [prediction, setPrediction] = useState(null);
 
   const getInsuranceQuote = async () => {
-    const response = await fetch("http://localhost:5109/charges_api", {
+    const FLASK_API_URL = "http://localhost:8000/charges_api";
+    const DJANGO_API_URL = "http://localhost:8000/charges_api";
+    const ASP_API_URL = "http://localhost:5109/charges_api";
+
+    const response = await fetch(FLASK_API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
