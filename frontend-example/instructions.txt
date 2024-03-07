@@ -2,3 +2,5 @@ REACT FRONTEND API REQUEST
 1) create react app (npx create-react-app frontend)
 2) Modify the App.js file to make a request to the backend API
 3) Test the app (npm start)
+
+I made it to calculate insurance quotes based on a user input but also based on data that could be stored in a database, so the prediction could be calculated when the user enters their information and it is added to the database along with a quote. it is seen in table form on the example.
